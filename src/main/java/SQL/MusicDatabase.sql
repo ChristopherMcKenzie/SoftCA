@@ -49,7 +49,7 @@ INSERT INTO `music` (`MusicID`, `UploaderID`, `Title`, `Genre`,  `File`, `MusicL
 -- Table structure for table `users`
 --
 
-CREATE TABLE `users` (
+CREATE TABLE `user` (
   `userID` int(4) NOT NULL,
   `username` varchar(20) NOT NULL,
   `email` varchar(30) NOT NULL,
@@ -62,7 +62,7 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`userID`, `username`, `email`, `password`, `country`, `admin`) VALUES
+INSERT INTO `user` (`userID`, `username`, `email`, `password`, `country`, `admin`) VALUES
 (1, 'BenRose', 'ben.rose76@gmail.com', '123', 'Ireland', 1);
 
 --
