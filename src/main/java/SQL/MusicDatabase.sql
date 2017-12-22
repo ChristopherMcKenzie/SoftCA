@@ -31,17 +31,17 @@ CREATE TABLE `music` (
   `UploaderID` int(4) NOT NULL,
   `Title` varchar(50) NOT NULL,
   `Genre` varchar(50) NOT NULL,
-  `MusicLength` DOUBLE(50) NOT NULL,
-  `File` varchar(200) NOT NULL DEFAULT 'Music/Default.mp3	'
+  `File` varchar(200) NOT NULL DEFAULT 'Music/Default.mp3	',
+  `MusicLength` FLOAT(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `music`
 --
 
-INSERT INTO `music` (`MusicID`, `UploaderID`, `Title`, `Genre`, `MusicLength`, `FilePath`) VALUES
-(1, 1, 'Deju Vu.mp3', 'Pop', 4.20, 'Music/Deju Vu.mp3	'),
-(2, 1, 'Into The Sky by Tara St. Michel.mp3', 'Music/Into The Sky by Tara St. Michel.mp3	'),
+INSERT INTO `music` (`MusicID`, `UploaderID`, `Title`, `Genre`,  `File`, `MusicLength`) VALUES
+(1, 1, 'Deju Vu.mp3', 'Pop', 'Music/Deju Vu.mp3	',  4.20),
+(2, 1, 'Into The Sky by Tara St. Michel.mp3', 'Pop', 'Music/Into The Sky by Tara St. Michel.mp3	', 4.03)
 
 -- --------------------------------------------------------
 
@@ -62,7 +62,7 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`userID`, `username`, `email`, `password`, `country`, `admin`, `salt`) VALUES
+INSERT INTO `users` (`userID`, `username`, `email`, `password`, `country`, `admin`) VALUES
 (1, 'BenRose', 'ben.rose76@gmail.com', '123', 'Ireland', 1);
 
 --
@@ -96,7 +96,7 @@ ALTER TABLE `music`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `userID` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `userID` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- Constraints for dumped tables
 --
