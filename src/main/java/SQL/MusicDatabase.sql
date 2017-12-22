@@ -32,7 +32,7 @@ CREATE TABLE `music` (
   `Title` varchar(50) NOT NULL,
   `Genre` varchar(50) NOT NULL,
   `MusicLength` DOUBLE(50) NOT NULL,
-  `FilePath` varchar(200) NOT NULL DEFAULT 'Music/Default.mp3	'
+  `File` varchar(200) NOT NULL DEFAULT 'Music/Default.mp3	'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -55,8 +55,7 @@ CREATE TABLE `users` (
   `email` varchar(30) NOT NULL,
   `password` varchar(128) NOT NULL,
   `country` varchar(200) DEFAULT 'No Country',
-  `admin` smallint(1) NOT NULL,
-  `salt` varchar(128) NOT NULL,
+  `admin` smallint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -64,7 +63,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`userID`, `username`, `email`, `password`, `country`, `admin`, `salt`) VALUES
-(1, 'BenRose', 'ben.rose76@gmail.com', '44c762f1b0c34b1b1a85ee47ed75c838f86eb9c88c775cb5682756850608e6050cb9680254a355219a3e0aa83e1e4669bb62c653d3f19b7fc175be81fcd71e63', 'Ireland', 1, 'mÚ—&\0BË\\ç×¿¼É\Z');
+(1, 'BenRose', 'ben.rose76@gmail.com', '123', 'Ireland', 1);
 
 --
 -- Indexes for dumped tables
