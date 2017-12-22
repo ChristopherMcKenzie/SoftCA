@@ -5,8 +5,11 @@
  */
 package Commands;
 
+import Daos.MusicDao;
+import java.util.InputMismatchException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -16,7 +19,34 @@ public class PlayMusicCommand implements Command{
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String forwardToJsp = "";
+        HttpSession session = request.getSession();
+        String title = request.getParameter("title");
+        
+        if(title != null && title.equals(""))
+        {
+            try{
+                
+                MusicDao mDao = new MusicDao("musicdatabase");
+                String FilePath = mDao.PlayMusic(title);
+                if (FilePath.equals("") || FilePath != null)
+                {
+                    session.setAttribute("MusicToPlay", title);
+                    forwardToJsp = "index.jsp";
+                }
+                
+            }catch (InputMismatchException e) {
+               forwardToJsp = "error.jsp";
+
+            session.setAttribute("errorMessage", "Text was supplied for parameters is not the right type."); 
+            }
+        }else
+           {
+                    
+             forwardToJsp = "error.jsp";   
+             session.setAttribute("errorMessage", "A parameter value required for jamming to tunes was missing");
+           }
+        return forwardToJsp;
     }
     
 }
