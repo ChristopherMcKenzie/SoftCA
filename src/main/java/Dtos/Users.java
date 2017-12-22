@@ -2,17 +2,17 @@
 package Dtos;
 //Author Ben
 
-public class User implements Comparable<User> {
+public class Users implements Comparable<Users> {
     private int UserID;
     private String UserName;
     private String Email;
     private String Password;
     private String FavGenre;
     
-    public User() {
+    public Users() {
     }
     
-    public User(int UserID, String UserName, String Email, String Password, String FavGenre){
+    public Users(int UserID, String UserName, String Email, String Password, String FavGenre){
         this.UserID = UserID;
         this.UserName = UserName;
         this.Email = Email;
@@ -20,7 +20,7 @@ public class User implements Comparable<User> {
         this.FavGenre = FavGenre;
     }
     
-    public User(int UserID, String UserName, String Email, String Password){
+    public Users(int UserID, String UserName, String Email, String Password){
         this.UserID = UserID;
         this.UserName = UserName;
         this.Email = Email;
@@ -86,7 +86,7 @@ public class User implements Comparable<User> {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final User other = (User) obj;
+        final Users other = (Users) obj;
         if (this.UserID != other.UserID) {
             return false;
         }
@@ -102,7 +102,7 @@ public class User implements Comparable<User> {
      * @return
      */
     @Override
-    public int compareTo(User o) {
+    public int compareTo(Users o) {
         if(this.UserID > o.UserID)
         {
             return +1;
