@@ -12,24 +12,30 @@ import java.util.Objects;
  * @author ben
  */
 public class Music {
-    private int MusicId;
+    private int MusicID;
+    private int UploaderID;
     private String Title;
     private String Genre;
-    private double Length;
-    private String FilePath;
+    private String File;
+    private double MusicLength;
     
-     public Music(int MusicId, String Title, String Genre, double Length, String FilePath) {
-        this.MusicId = MusicId;
+     public Music(int MusicId, int UploaderID, String Title, String Genre, String FilePath, double Length) {
+        this.MusicID = MusicId;
+        this.UploaderID = UploaderID;
         this.Title= Title;
         this.Genre = Genre;
-        this.Length = Length;
-        this.FilePath = FilePath;
+        this.File = FilePath;
+        this.MusicLength = Length;
     }
 
     public int getMusicId() {
-        return MusicId;
+        return MusicID;
     }
 
+    public int getUploaderID() {
+        return UploaderID;
+    }
+    
     public String getTitle() {
         return Title;
     }
@@ -39,18 +45,22 @@ public class Music {
     }
 
     public double getLength() {
-        return Length;
+        return MusicLength;
     }
 
     public String getFilePath() {
-        return FilePath;
+        return File;
     }
     
 
     public void setMusicId(int MusicId) {
-        this.MusicId = MusicId;
+        this.MusicID = MusicId;
     }
 
+    public void setUploaderID(int UploaderID) {
+        this.UploaderID = UploaderID;
+    }
+    
     public void setTitle(String Title) {
         this.Title = Title;
     }
@@ -60,18 +70,18 @@ public class Music {
     }
 
     public void setLength(double Length) {
-        this.Length = Length;
+        this.MusicLength = Length;
     }
 
     public void setFilePath(String FilePath) {
-        this.FilePath = FilePath;
+        this.File = FilePath;
     }
     
 
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 53 * hash + this.MusicId;
+        hash = 53 * hash + this.MusicID;
         hash = 53 * hash + Objects.hashCode(this.Title);
         return hash;
     }
@@ -88,7 +98,7 @@ public class Music {
             return false;
         }
         final Music other = (Music) obj;
-        if (this.MusicId != other.MusicId) {
+        if (this.MusicID != other.MusicID) {
             return false;
         }
         if (!Objects.equals(this.Title, other.Title)) {
@@ -99,6 +109,8 @@ public class Music {
 
     @Override
     public String toString() {
-        return "Music{" + "MusicId=" + MusicId + ", Title=" + Title + ", Genre=" + Genre + ", Length=" + Length + ", FilePath=" + FilePath + '}';
-    } 
+        return "Music{" + "MusicID=" + MusicID + ", UploaderID=" + UploaderID + ", Title=" + Title + ", Genre=" + Genre + ", File=" + File + ", Length=" + MusicLength + '}';
+    }
+
+
 }

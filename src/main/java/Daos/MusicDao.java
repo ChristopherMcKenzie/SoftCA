@@ -100,6 +100,46 @@ public class MusicDao extends Dao implements MusicDaoInterface{
             return false;
         }
     }
+
+    @Override
+    public ArrayList<Music> GetAllMusic() {
+        Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        ArrayList<Music> music = new ArrayList();
+        
+        try{
+            con = getConnection();
+
+            String query = "Select * from music";
+            ps = con.prepareStatement(query);
+            rs = ps.executeQuery(); 
+            
+            while(rs.next())
+            {
+                Music m = new Music(rs.getInt("MusicID"), rs.getInt("UploaderID"), rs.getString("Title"), rs.getString("Genre"), rs.getString("File"), rs.getDouble("MusicLength"));
+                music.add(m);
+            }
+        }catch (SQLException e) {
+            System.out.println("An exception has occurred in the GetAllMusic() method: " + e.getMessage());
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (ps != null) {
+                    ps.close();
+                }
+                if (con != null) {
+                    freeConnection(con);
+                }
+            } catch (SQLException e) {
+                System.out.println("Exception occurred in the final part of GetAllMusic(): " + e.getMessage());
+            }
+        }
+        return music;
+    }
+    
     
     
 }

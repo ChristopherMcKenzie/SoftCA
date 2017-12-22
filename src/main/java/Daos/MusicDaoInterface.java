@@ -9,5 +9,7 @@ public interface  MusicDaoInterface {
     
     public boolean PostMusic(int MusicId, String Title, String Genre, double Length, String FilePath);
     
+    public ArrayList<Music> GetAllMusic();
+    
     
 }
