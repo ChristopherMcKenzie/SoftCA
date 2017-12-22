@@ -16,16 +16,18 @@ public interface UserDaoInterface {
      * @param password
      * @param email
      * @param favGenre
+     * @param admin
      * @return true or false based on if the user registerd successfully 
      */
-    public boolean registerUser(String uName, String password, String email, String favGenre);
+    public boolean registerUser(String uName, String password, String email, String favGenre, int admin);
     /**
      * 
      * @param uName
      * @param password
+     * @param admin
      * @return 
      */
-    public User loggingUser(String uName, String password);
+    public User loggingUser(String uName, String password, int admin);
     /**
      * 
      * @param id

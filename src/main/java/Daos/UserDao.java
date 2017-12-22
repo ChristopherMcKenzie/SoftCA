@@ -24,7 +24,7 @@ public class UserDao extends Dao implements UserDaoInterface{
     }
 
     @Override
-    public boolean registerUser(String uName, String password, String email, String favGenre) {
+    public boolean registerUser(String uName, String password, String email, String favGenre, int admin) {
         Connection con = null;
         PreparedStatement ps = null;
         int rowsAffected = 0;
@@ -69,7 +69,7 @@ public class UserDao extends Dao implements UserDaoInterface{
     }
 
     @Override
-    public User loggingUser(String uName, String password) {
+    public User loggingUser(String uName, String password, int admin) {
         Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -87,7 +87,7 @@ public class UserDao extends Dao implements UserDaoInterface{
             
             while(rs.next())
             {
-            u = new User(rs.getInt("UserID"), rs.getString("UserName"), rs.getString("Email"), rs.getString("Password"), rs.getString("FavGenre"));
+            u = new User(rs.getInt("UserID"), rs.getString("UserName"), rs.getString("Email"), rs.getString("Password"), rs.getString("FavGenre"), rs.getInt("admin"));
             }
  
         }catch (SQLException e) {
@@ -127,7 +127,7 @@ public class UserDao extends Dao implements UserDaoInterface{
             
             while(rs.next())
             {
-                u = new User(rs.getInt("id"), rs.getString("username"), rs.getString("password"), rs.getString("email"), rs.getString("favGenre"));
+                u = new User(rs.getInt("id"), rs.getString("username"), rs.getString("password"), rs.getString("email"), rs.getString("favGenre"), rs.getInt("admin"));
             }
             
         }catch(SQLException e){

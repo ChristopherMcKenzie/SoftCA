@@ -8,23 +8,34 @@ public class User implements Comparable<User> {
     private String Email;
     private String Password;
     private String FavGenre;
+    private int admin;
     
     public User() {
     }
     
-    public User(int UserID, String UserName, String Email, String Password, String FavGenre){
+    public User(int UserID, String UserName, String Email, String Password, String FavGenre, int admin){
         this.UserID = UserID;
         this.UserName = UserName;
         this.Email = Email;
         this.Password = Password;
         this.FavGenre = FavGenre;
+        this.admin = admin;
     }
     
-    public User(int UserID, String UserName, String Email, String Password){
+    public User(int UserID, String UserName, String Email, String Password, int admin){
         this.UserID = UserID;
         this.UserName = UserName;
         this.Email = Email;
         this.Password = Password;
+        this.admin = admin;
+    }
+
+    public int getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(int admin) {
+        this.admin = admin;
     }
 
     public int getUserID() {
