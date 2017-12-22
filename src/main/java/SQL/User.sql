@@ -4,7 +4,6 @@ CREATE TABLE 'user'(
   'Email' VARCHAR(50) NOT NULL,
   'Password' VARCHAR(50) NOT NULL,
   'FavGenre' VARCHAR(50) NOT NULL,
-  'Admin' int(1) NOT NULL, 
   PRIMARY KEY('UserId')
 );
 
