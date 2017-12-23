@@ -55,7 +55,7 @@ CREATE TABLE `user` (
   `email` varchar(30) NOT NULL,
   `password` varchar(128) NOT NULL,
   `country` varchar(200) DEFAULT 'No Country',
-  `admin` smallint(1) NOT NULL
+  `FavGenre` varchar(30) Default 'None'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -63,7 +63,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`userID`, `username`, `email`, `password`, `country`, `admin`) VALUES
-(1, 'BenRose', 'ben.rose76@gmail.com', '123', 'Ireland', 1);
+(1, 'BenRose', 'ben.rose76@gmail.com', '123', 'Ireland', 'None');
 
 --
 -- Indexes for dumped tables

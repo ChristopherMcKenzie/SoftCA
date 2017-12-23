@@ -24,7 +24,7 @@ public class UserDao extends Dao implements UserDaoInterface{
     }
 
     @Override
-    public boolean registerUser(String uName, String password, String email, String favGenre) {
+    public boolean registerUser(String uName, String password, String email, String country, String favGenre) {
         Connection con = null;
         PreparedStatement ps = null;
         int rowsAffected = 0;
@@ -32,12 +32,13 @@ public class UserDao extends Dao implements UserDaoInterface{
         try{
             con = getConnection();
             
-            String query = "Insert into user(username, email, password, favGenre) Values (?,?,?,?,?)";
+            String query = "Insert into user(username, email, password, country, favGenre) Values (?,?,?,?,?)";
             ps = con.prepareStatement(query);
             ps.setString(1, uName);
             ps.setString(2, email);
             ps.setString(3, password);
-            ps.setString(4, favGenre);
+            ps.setString(4, country);
+            ps.setString(5, favGenre);
             
             rowsAffected = ps.executeUpdate();
             
@@ -78,7 +79,7 @@ public class UserDao extends Dao implements UserDaoInterface{
         try{
             con = getConnection();
 
-            String query = "SELECT * from users Where username = ? AND password = ?";
+            String query = "SELECT * from user Where username = ? AND password = ?";
             ps = con.prepareStatement(query);
             ps.setString(1, uName);
             ps.setString(2, password);
@@ -87,7 +88,7 @@ public class UserDao extends Dao implements UserDaoInterface{
             
             while(rs.next())
             {
-            u = new Users(rs.getInt("UserID"), rs.getString("UserName"), rs.getString("Email"), rs.getString("Password"), rs.getString("FavGenre"));
+            u = new Users(rs.getInt("userID"), rs.getString("username"), rs.getString("email"), rs.getString("password"), rs.getString("country"), rs.getString("FavGenre"));
             }
  
         }catch (SQLException e) {
@@ -102,7 +103,7 @@ public class UserDao extends Dao implements UserDaoInterface{
                     freeConnection(con);
                 }
             } catch (SQLException e) {
-                System.out.println("Exception occured in the finally section of the RemoveUser() method");
+                System.out.println("Exception occured in the finally section of the LogingInUser() method");
                 e.getMessage();
                 
             }
@@ -112,7 +113,7 @@ public class UserDao extends Dao implements UserDaoInterface{
     }
 
     @Override
-    public Users getUser(int id) {
+    public Users getUser(String name) {
         Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -120,14 +121,14 @@ public class UserDao extends Dao implements UserDaoInterface{
         try
         {
             con = getConnection();
-            String query = "Select * from users where ID = ?";
+            String query = "Select * from users where username = ?";
             ps = con.prepareStatement(query);
-            ps.setInt(1, id);
+            ps.setString(1, name);
             rs = ps.executeQuery();
             
             while(rs.next())
             {
-                u = new Users(rs.getInt("id"), rs.getString("username"), rs.getString("password"), rs.getString("email"), rs.getString("favGenre"));
+                u = new Users(rs.getInt("userID"), rs.getString("username"), rs.getString("password"), rs.getString("email"), rs.getString("country"), rs.getString("favGenre"));
             }
             
         }catch(SQLException e){
@@ -145,7 +146,7 @@ public class UserDao extends Dao implements UserDaoInterface{
                     freeConnection(con);
                 }
             } catch (SQLException e) {
-                System.out.println("Exception occured in the finally section of the GetAuthorByID() method: " + e.getMessage());
+                System.out.println("Exception occured in the finally section of the getUser() method: " + e.getMessage());
             }
         }
         

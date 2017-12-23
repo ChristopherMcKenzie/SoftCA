@@ -7,24 +7,34 @@ public class Users implements Comparable<Users> {
     private String UserName;
     private String Email;
     private String Password;
+    private String country;
     private String FavGenre;
     
     public Users() {
     }
     
-    public Users(int UserID, String UserName, String Email, String Password, String FavGenre){
+    public Users(int UserID, String UserName, String Email, String Password, String country, String FavGenre){
         this.UserID = UserID;
         this.UserName = UserName;
         this.Email = Email;
         this.Password = Password;
+        this.country = country;
         this.FavGenre = FavGenre;
     }
     
-    public Users(int UserID, String UserName, String Email, String Password){
+    public Users(int UserID, String UserName, String Email, String Password, String country){
         this.UserID = UserID;
         this.UserName = UserName;
         this.Email = Email;
         this.Password = Password;
+        this.country = country;
+    }
+    
+     public Users(String UserName, String Email, String Password, String country){
+        this.UserName = UserName;
+        this.Email = Email;
+        this.Password = Password;
+        this.country = country;
     }
 
     public int getUserID() {
@@ -43,6 +53,10 @@ public class Users implements Comparable<Users> {
         return Password;
     }
 
+    public String getCountry() {
+        return country;
+    }
+   
     public String getFavGenre() {
         return FavGenre;
     }
@@ -63,6 +77,10 @@ public class Users implements Comparable<Users> {
         this.Password = Password;
     }
 
+    public void setCountry(String country) {
+        this.country = country;
+    }
+    
     public void setFavGenre(String FavGenre) {
         this.FavGenre = FavGenre;
     }
@@ -113,6 +131,11 @@ public class Users implements Comparable<Users> {
         }
         else 
             return 0;
+    }
+
+    @Override
+    public String toString() {
+        return "Users{" + "UserID=" + UserID + ", UserName=" + UserName + ", Email=" + Email + ", Password=" + Password + ", country=" + country + ", FavGenre=" + FavGenre + '}';
     }
     
     

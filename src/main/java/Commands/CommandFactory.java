@@ -8,12 +8,19 @@ package Commands;
 public class CommandFactory {
    public Command createCommand(String action)
     {
-       if("Play".equals(action)){
+       if(null != action)switch (action) {
+           case "Play":
                return new PlayMusicCommand();
-       }
-       else if("upload".equals(action)){
+           case "upload":
                return new UploadCommand();
+           case "register":
+               return new RegisterCommand();
+           case "login":
+               return new LoginCommand();
+           default:
+               break;
        }
+    
        return null;
     }
 }
