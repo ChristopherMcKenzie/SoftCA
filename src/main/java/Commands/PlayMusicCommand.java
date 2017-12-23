@@ -6,13 +6,18 @@
 package Commands;
 
 import Daos.MusicDao;
+import java.io.BufferedInputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.InputMismatchException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
+import javazoom.jl.decoder.JavaLayerException;
+import javazoom.jl.player.*;
 /**
  *
  * @author ben
@@ -42,14 +47,21 @@ public class PlayMusicCommand implements Command{
                 }
                 
                 String Full = FilePath;
-                Media hit = new Media(new File(Full).toURI().toString());
-                MediaPlayer mediaPlayer = new MediaPlayer(hit);
-                mediaPlayer.play();
+                File file = new File(Full);
+                FileInputStream fis = new FileInputStream(file);
+                BufferedInputStream bis = new BufferedInputStream(fis);
+                
+               try{
+                Player player = new Player(bis);
+                player.play();
+                }catch (JavaLayerException ex){}
                 
             }catch (InputMismatchException e) {
                forwardToJsp = "error.jsp";
 
             session.setAttribute("errorMessage", "Text was supplied for parameters is not the right type."); 
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(PlayMusicCommand.class.getName()).log(Level.SEVERE, null, ex);
             }
         }else
            {
