@@ -5,9 +5,9 @@ import java.util.ArrayList;
 
 public interface  MusicDaoInterface {
     
-    public String PlayMusic(String title);
+    public String PlayMusic(int musicID);
     
-    public boolean PostMusic(int MusicId, String Title, String Genre, double Length, String FilePath);
+    public boolean PostMusic(int UploaderID, String Title, String Genre, String File, double MusicLength);
     
     public ArrayList<Music> GetAllMusic();
     

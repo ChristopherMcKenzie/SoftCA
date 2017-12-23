@@ -18,10 +18,17 @@
             for (int i = 0; i < allMusic.size(); i++) {
         %>
     <Playlist>
+        <form name="SongPlay" action="FrontController" method="play">
+        <input type="hidden" name="musicID" value="<%=allMusic.get(i).getMusicId()%>" />
+        <input type="hidden" name="musicTitle" value="<%=allMusic.get(i).getTitle()%>" />
+        <input type="hidden" name="action" value="Play" />
         <h3><%=(allMusic.get(i)).getTitle()%></h3>
+        <input type="submit" value="Play"/>
+        </form>
     </Playlist>
         <%
             }
             %>
+            
     </body>
 </html>

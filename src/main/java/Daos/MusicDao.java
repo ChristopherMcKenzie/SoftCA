@@ -21,23 +21,23 @@ public class MusicDao extends Dao implements MusicDaoInterface{
     }
 
     @Override
-    public String PlayMusic(String title) {
+    public String PlayMusic(int musicID) {
         Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
         String song = null;
         try{
            con = getConnection();
-            String query = "Select FilePath from music Where Title = ?";
+            String query = "Select File from music Where MusicID = ?";
             ps = con.prepareStatement(query);
-            ps.setString(1, title);
+            ps.setInt(1, musicID);
             rs = ps.executeQuery(); 
         while(rs.next())
             {
-                song = rs.getString("FilePath");
+                song = rs.getString("File");
             }
         }catch (SQLException e) {
-            System.out.println("Exception occured in the getUserbyName() method: " + e.getMessage());
+            System.out.println("Exception occured in the PlayMusic() method: " + e.getMessage());
         } finally {
             try {
                 if (rs != null) {
@@ -50,7 +50,7 @@ public class MusicDao extends Dao implements MusicDaoInterface{
                     freeConnection(con);
                 }
             } catch (SQLException e) {
-                System.out.println("Exception occured in the finally section of the getUserbyName() method: " + e.getMessage());
+                System.out.println("Exception occured in the finally section of the PlayMusic() method: " + e.getMessage());
             }
         }
         
@@ -58,7 +58,7 @@ public class MusicDao extends Dao implements MusicDaoInterface{
     }
 
     @Override
-    public boolean PostMusic(int MusicId, String Title, String Genre, double Length, String FilePath) {
+    public boolean PostMusic(int UploaderID, String Title, String Genre, String File, double Length) {
         Connection con = null;
         PreparedStatement ps = null;
         int rowsAffected = 0;
@@ -66,12 +66,13 @@ public class MusicDao extends Dao implements MusicDaoInterface{
         try{
             con = getConnection();
 
-            String query = "Insert into music (MusicId, Title, Genre, game, Length, FilePath) values(?,?,?,?)";
+            String query = "Insert into music (UploaderID, Title, Genre, game, Length, FilePath) values(?,?,?,?)";
             ps = con.prepareStatement(query);
-            ps.setString(1, Title);
-            ps.setString(2, Genre);
-            ps.setDouble(3, Length);
-            ps.setString(4, FilePath);
+            ps.setInt(1, UploaderID);
+            ps.setString(2, Title);
+            ps.setString(3, Genre);
+            ps.setString(4, File);
+            ps.setDouble(5, Length);
             
             rowsAffected = ps.executeUpdate(); 
             

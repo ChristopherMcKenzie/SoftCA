@@ -27,6 +27,14 @@ public class Music {
         this.File = FilePath;
         this.MusicLength = Length;
     }
+     
+     public Music(int UploaderID, String Title, String Genre, String FilePath, double Length) {
+        this.UploaderID = UploaderID;
+        this.Title= Title;
+        this.Genre = Genre;
+        this.File = FilePath;
+        this.MusicLength = Length;
+    }
 
     public int getMusicId() {
         return MusicID;
