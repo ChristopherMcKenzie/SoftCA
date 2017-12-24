@@ -58,7 +58,7 @@ public class MusicDao extends Dao implements MusicDaoInterface{
     }
 
     @Override
-    public boolean PostMusic(int UploaderID, String Title, String Genre, String File, double Length) {
+    public boolean PostMusic(int UploaderID, String Title, String Genre, double Length, String File) {
         Connection con = null;
         PreparedStatement ps = null;
         int rowsAffected = 0;
@@ -66,7 +66,7 @@ public class MusicDao extends Dao implements MusicDaoInterface{
         try{
             con = getConnection();
 
-            String query = "Insert into music (UploaderID, Title, Genre, game, Length, FilePath) values(?,?,?,?)";
+            String query = "Insert into music (UploaderID, Title, Genre, File, MusicLength) values(?,?,?,?)";
             ps = con.prepareStatement(query);
             ps.setInt(1, UploaderID);
             ps.setString(2, Title);

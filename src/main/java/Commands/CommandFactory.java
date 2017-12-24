@@ -11,7 +11,7 @@ public class CommandFactory {
        if(null != action)switch (action) {
            case "Play":
                return new PlayMusicCommand();
-           case "upload":
+           case "Upload":
                return new UploadCommand();
            case "register":
                return new RegisterCommand();

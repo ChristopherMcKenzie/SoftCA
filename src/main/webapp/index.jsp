@@ -13,19 +13,29 @@
     <body>
         <%
                     Object Value2  = session.getAttribute("CurrentUser");
-                    UserDao navaccount = new UserDao("musicdatabase");
                     if (Value2!= null) {
                         Users successUser = (Users) Value2;
 
                         
          %>
         <p>
-            Hi <%=successUser.getUserName()%>
+            Hi <%=successUser.getUserName()%> you have access now.
             
             <%
                 }
-                %>
-                <br> 
+            %>
+            <%
+                Object Value3 = session.getAttribute("MuSuccess");
+                if(Value3!= null) {
+                String Successmsg = (String) Value3;
+            %>
+        <p>
+            <%=Successmsg%> 
+        </p>
+            <%
+                }
+            %>
+
             <a href="Reg.jsp">Registration</a><br>
             <a href="Login.jsp">Login</a>
         </p>
@@ -37,17 +47,39 @@
         %>
 
     <Playlist>
-        <form name="SongPlay" action="FrontController" method="play">
+        <form name="SongUpload" action="FrontController" method="play" enctype="multipart/form-data">
         <input type="hidden" name="musicID" value="<%=allMusic.get(i).getMusicId()%>" />
         <input type="hidden" name="musicTitle" value="<%=allMusic.get(i).getTitle()%>" />
         <input type="hidden" name="action" value="Play" />
         <h3><%=(allMusic.get(i)).getTitle()%></h3>
-        <input type="submit" value="Play"/>
+        <input type="submit" value="Play"/> <br><br>
         </form>
     </Playlist>
-        <%
-            }
-            %>
+
+     <%
+         }
+                    if (Value2!= null) {
+                        Users successUser = (Users) Value2;
+
+                        
+         %>
+    <Upload>
+     <form name="UploadSong" action="FrontController" method="upload">
+        <input type="hidden" name="userID" value="<%=successUser.getUserID()%>"/>
+         Title  :  <input name="Title" id="txtTitle" size=30 type="text"  placeholder="Title"  /><br>  
+         Genre  : <input name="Genre" id="txtGenre" size=30 type="text" placeholder="Genre" /><br>
+         Song: <input type="file" name="file" size="50"/><br>
+         Length: <input type="text" name="Length" size=30 type="text" placeholder="Length" /><br>
+        <input type="hidden" name="action" value="Upload" />
+        <input type="submit" value="Upload"/>
+        </form>
+    </Upload>
+            
+            <%
+                }
+                %>
+ 
+
             
     </body>
 </html>

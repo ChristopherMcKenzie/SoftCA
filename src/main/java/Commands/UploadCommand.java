@@ -5,18 +5,91 @@
  */
 package Commands;
 
+import Daos.MusicDao;
+import java.io.File;
+import java.io.IOException;
+import java.util.Iterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 
 /**
  *
  * @author ben
  */
 public class UploadCommand implements Command{
-
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            String forwardToJsp = "";
+            
+                String ID = request.getParameter("userID");
+                String Title = request.getParameter("Title");
+                String Genre = request.getParameter("Genre");
+                String Length = request.getParameter("Length");
+                // gets absolute path of the web application
+                String appPath = "E:\\SoftProject\\SoftCA\\src\\main\\webapp\\Music";
+                String MusicName = null;
+                String MusicPath = null;
+                try {
+                    Part filePart = request.getPart("file");
+                     MusicName = filePart.getName();
+                     MusicPath = appPath + MusicName;
+                } catch (IOException ex) {
+                    Logger.getLogger(UploadCommand.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ServletException ex) {
+                    Logger.getLogger(UploadCommand.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+
+                if (Title != null && Genre != null && Length !=null && !Title.equals("") && !Genre.equals("") && !Length.equals(""))
+                {
+                    int UploaderID = Integer.parseInt(ID);
+                    double MusicLength = Double.parseDouble(Length);
+                    HttpSession session = request.getSession();
+                    MusicDao musicDao = new MusicDao("musicdatabase");
+                    boolean Action = musicDao.PostMusic(UploaderID, Title, Genre, MusicLength, MusicPath);
+                    if(Action == true){
+                        String msg = "Music Uploaded";
+                        session.setAttribute("MuSuccess", msg);
+                        
+                        forwardToJsp = "index.jsp";
+                        
+                    }
+                    else if(Action == false)
+                    {
+                        String msg = " Music Failed ";
+                        session.setAttribute("MuSuccess", msg);
+                        
+                        
+                        forwardToJsp = "index.jsp";
+                    } 
+                }else
+                {
+                    
+                    forwardToJsp = "error.jsp";
+                    
+                    HttpSession session = request.getSession();
+
+                    
+                    session.setAttribute("errorMessage", "A parameter value required for Music Upload was missing");
+                }
+                
+                
+                return forwardToJsp;
+    }                    
+    private String extractFileName(Part part) {
+        String contentDisp = part.getHeader("content-disposition");
+        String[] items = contentDisp.split(";");
+        for (String s : items) {
+            if (s.trim().startsWith("filename")) {
+                return s.substring(s.indexOf("=") + 2, s.length()-1);
+            }
+        }
+        return "";
     }
-    
 }
+

@@ -7,7 +7,7 @@ public interface  MusicDaoInterface {
     
     public String PlayMusic(int musicID);
     
-    public boolean PostMusic(int UploaderID, String Title, String Genre, String File, double MusicLength);
+    public boolean PostMusic(int UploaderID, String Title, String Genre, double Length, String File);
     
     public ArrayList<Music> GetAllMusic();
     

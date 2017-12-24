@@ -24,8 +24,8 @@
                 
                <!--[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$-->
                 Email  : <span><input name="email" size=30 type="email" maxlength="30" placeholder="Email" /><span id="emaillocation" style="color:red"></span><br>
-                Country : <input name="country" id="txtPassword" size=30 type="text" placeholder="country" /><span id="passwordlocation" style="color:red"></span><br>
-                FavGenre : <input name="genre" id="txtPassword" size=30 type="text" placeholder="genre" /><span id="passwordlocation" style="color:red"></span><br>
+                Country : <input name="country" id="txtCountry" size=30 type="text" placeholder="country" /><span id="passwordlocation" style="color:red"></span><br>
+                FavGenre : <input name="genre" id="txtFavGenre" size=30 type="text" placeholder="genre" /><span id="passwordlocation" style="color:red"></span><br>
                 
                 
                 <input type="submit" id="btnSubmit" value="Register" />
