@@ -10,8 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 /**
  *
@@ -24,7 +23,7 @@ public class UserDao extends Dao implements UserDaoInterface{
     }
 
     @Override
-    public boolean registerUser(String uName, String password, String email, String country, String favGenre) {
+    public boolean registerUser(String uName, String password, String email, String country, String FavGenre) {
         Connection con = null;
         PreparedStatement ps = null;
         int rowsAffected = 0;
@@ -32,13 +31,13 @@ public class UserDao extends Dao implements UserDaoInterface{
         try{
             con = getConnection();
             
-            String query = "Insert into user(username, email, password, country, favGenre) Values (?,?,?,?,?)";
+            String query = "Insert into user(username, email, password, country, FavGenre) Values (?,?,?,?,?)";
             ps = con.prepareStatement(query);
             ps.setString(1, uName);
             ps.setString(2, email);
             ps.setString(3, password);
             ps.setString(4, country);
-            ps.setString(5, favGenre);
+            ps.setString(5, FavGenre);
             
             rowsAffected = ps.executeUpdate();
             
@@ -128,7 +127,7 @@ public class UserDao extends Dao implements UserDaoInterface{
             
             while(rs.next())
             {
-                u = new Users(rs.getInt("userID"), rs.getString("username"), rs.getString("password"), rs.getString("email"), rs.getString("country"), rs.getString("favGenre"));
+                u = new Users(rs.getInt("userID"), rs.getString("username"), rs.getString("password"), rs.getString("email"), rs.getString("country"), rs.getString("FavGenre"));
             }
             
         }catch(SQLException e){
