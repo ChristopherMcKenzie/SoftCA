@@ -1,15 +1,16 @@
 package Daos;
 
 import Dtos.Music;
+import Dtos.Users;
 import java.util.ArrayList;
 
-public interface  MusicDaoInterface {
+public interface MusicDaoInterface {
     
-    public String PlayMusic(int musicID);
+    public String PlayMusic(Users currentUser, int musicID);
     
-    public boolean PostMusic(int UploaderID, String Title, String Genre, double Length, String File);
+    public boolean PostMusic(Users currentUser, int UploaderID, String Title, String Genre, double Length, String File);
     
-    public ArrayList<Music> GetAllMusic();
+    public ArrayList<Music> GetAllMusic(Users currentUser);
     
     
 }

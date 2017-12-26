@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package Daos;
-import Dtos.Music;
+import Dtos.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -21,7 +21,7 @@ public class MusicDao extends Dao implements MusicDaoInterface{
     }
 
     @Override
-    public String PlayMusic(int musicID) {
+    public String PlayMusic(Users currentUser, int musicID) {
         Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -58,7 +58,7 @@ public class MusicDao extends Dao implements MusicDaoInterface{
     }
 
     @Override
-    public boolean PostMusic(int UploaderID, String Title, String Genre, double Length, String File) {
+    public boolean PostMusic(Users currentUser,int UploaderID, String Title, String Genre, double Length, String File) {
         Connection con = null;
         PreparedStatement ps = null;
         int rowsAffected = 0;
@@ -103,7 +103,7 @@ public class MusicDao extends Dao implements MusicDaoInterface{
     }
 
     @Override
-    public ArrayList<Music> GetAllMusic() {
+    public ArrayList<Music> GetAllMusic(Users currentUser) {
         Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
