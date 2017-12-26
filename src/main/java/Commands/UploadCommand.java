@@ -6,6 +6,7 @@
 package Commands;
 
 import Daos.MusicDao;
+import Dtos.Users;
 import java.io.File;
 import java.io.IOException;
 import java.util.Iterator;
@@ -25,7 +26,7 @@ public class UploadCommand implements Command{
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
             String forwardToJsp = "";
-            
+            Users user = new Users();
                 String ID = request.getParameter("userID");
                 String Title = request.getParameter("Title");
                 String Genre = request.getParameter("Genre");
@@ -51,7 +52,7 @@ public class UploadCommand implements Command{
                     double MusicLength = Double.parseDouble(Length);
                     HttpSession session = request.getSession();
                     MusicDao musicDao = new MusicDao("musicdatabase");
-                    boolean Action = musicDao.PostMusic(UploaderID, Title, Genre, MusicLength, MusicPath);
+                    boolean Action = musicDao.PostMusic(user, UploaderID, Title, Genre, MusicLength, MusicPath);
                     if(Action == true){
                         String msg = "Music Uploaded";
                         session.setAttribute("MuSuccess", msg);
@@ -62,7 +63,7 @@ public class UploadCommand implements Command{
                     else if(Action == false)
                     {
                         String msg = " Music Failed ";
-                        session.setAttribute("MuSuccess", msg);
+                        session.setAttribute("MuSuccess", UploaderID + Title + Genre + MusicLength + MusicPath);
                         
                         
                         forwardToJsp = "index.jsp";

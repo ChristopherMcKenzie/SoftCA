@@ -28,7 +28,7 @@ public class MusicDao extends Dao implements MusicDaoInterface{
         String song = null;
         try{
            con = getConnection();
-            String query = "Select File from music Where MusicID = ?";
+            String query = "Select title from music Where MusicID = ?";
             ps = con.prepareStatement(query);
             ps.setInt(1, musicID);
             rs = ps.executeQuery(); 
@@ -66,7 +66,7 @@ public class MusicDao extends Dao implements MusicDaoInterface{
         try{
             con = getConnection();
 
-            String query = "Insert into music (UploaderID, Title, Genre, File, MusicLength) values(?,?,?,?)";
+            String query = "Insert into music (UploaderID, Title, Genre, File, MusicLength) values(?,?,?,?,?)";
             ps = con.prepareStatement(query);
             ps.setInt(1, UploaderID);
             ps.setString(2, Title);
@@ -140,6 +140,8 @@ public class MusicDao extends Dao implements MusicDaoInterface{
         }
         return music;
     }
+
+   
     
     
     

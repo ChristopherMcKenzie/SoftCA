@@ -6,6 +6,8 @@
 package Commands;
 
 import Daos.MusicDao;
+import Daos.UserDao;
+import Dtos.Users;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -23,45 +25,36 @@ import javazoom.jl.player.*;
  * @author ben
  */
 public class PlayMusicCommand implements Command{
-
+    
+    Users user = new Users();
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
         String forwardToJsp = "";
         HttpSession session = request.getSession();
         String id = request.getParameter("musicID");
         String title = request.getParameter("musicTitle");
-        
+        String userID = request.getParameter("userID");
         
         if(id != null &&  title != null)
         {
             int mID = Integer.parseInt(id);
+            
             try{
-                
+                UserDao uDao = new UserDao("muiscdatabase");
                 MusicDao mDao = new MusicDao("musicdatabase");
-                String FilePath = mDao.PlayMusic(mID);
+                String FilePath = mDao.PlayMusic(user, mID);
                 if (FilePath != null)
                 {
                     session.setAttribute("MusicToPlay", mID);
                     session.setAttribute("MusicTitle", title);
-                    forwardToJsp = "index.jsp";
+                    forwardToJsp = "CurrentSong.jsp";
                 }
                 
-                String Full = FilePath;
-                File file = new File(Full);
-                FileInputStream fis = new FileInputStream(file);
-                BufferedInputStream bis = new BufferedInputStream(fis);
+             
                 
-               try{
-                Player player = new Player(bis);
-                player.play();
-                }catch (JavaLayerException ex){}
-                
-            }catch (InputMismatchException e) {
-               forwardToJsp = "error.jsp";
-
-            session.setAttribute("errorMessage", "Text was supplied for parameters is not the right type."); 
-            } catch (FileNotFoundException ex) {
-                Logger.getLogger(PlayMusicCommand.class.getName()).log(Level.SEVERE, null, ex);
+            }catch(Exception e)
+            {
+                System.out.println(e.getMessage());
             }
         }else
            {

@@ -41,8 +41,12 @@
         </p>
         <h1>Player</h1>
          <%
+            Users user = new Users();
+            UserDao uDao = new UserDao("musicdatabase");
             MusicDao mDao = new MusicDao("musicdatabase");
-            ArrayList<Music> allMusic = new ArrayList(mDao.GetAllMusic());
+            
+            ArrayList<Music> allMusic = new ArrayList();
+            allMusic = mDao.GetAllMusic(user);
             for (int i = 0; i < allMusic.size(); i++) {
         %>
 

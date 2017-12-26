@@ -12,5 +12,6 @@ public interface MusicDaoInterface {
     
     public ArrayList<Music> GetAllMusic(Users currentUser);
     
+ 
     
 }
