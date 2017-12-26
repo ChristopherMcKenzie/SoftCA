@@ -87,7 +87,7 @@ public class UserDao extends Dao implements UserDaoInterface{
             
             while(rs.next())
             {
-            u = new Users(rs.getInt("userID"), rs.getString("username"), rs.getString("email"), rs.getString("password"), rs.getString("country"), rs.getString("FavGenre"));
+                u = new Users(rs.getInt("userID"), rs.getInt("admin"), rs.getString("UserName"), rs.getString("Email"), rs.getString("password"), rs.getString("FavGenre"));
             }
  
         }catch (SQLException e) {
@@ -127,7 +127,7 @@ public class UserDao extends Dao implements UserDaoInterface{
             
             while(rs.next())
             {
-                u = new Users(rs.getInt("userID"), rs.getString("username"), rs.getString("password"), rs.getString("email"), rs.getString("country"), rs.getString("FavGenre"));
+                u = new Users(rs.getInt("userID"), rs.getInt("admin"), rs.getString("UserName"), rs.getString("Email"), rs.getString("password"), rs.getString("FavGenre"));
             }
             
         }catch(SQLException e){
