@@ -17,6 +17,23 @@ public class MusicDaoProxy implements MusicDaoInterface{
 
     private MusicDao musicDao = new MusicDao("musicdatabase");
     
+    private static volatile MusicDaoProxy singleProxyInstance;
+    
+    public static MusicDaoProxy getInstance()
+    {
+        if(singleProxyInstance == null)
+        {
+            synchronized(MusicDaoProxy.class)
+            {
+                if(singleProxyInstance == null)
+                {
+                    singleProxyInstance = new MusicDaoProxy();
+                }
+            }
+        }
+        return singleProxyInstance;
+    }
+    
     @Override
     public String PlayMusic(Users currentUser, int musicID) {
         if(currentUser.getUserID() == 0)

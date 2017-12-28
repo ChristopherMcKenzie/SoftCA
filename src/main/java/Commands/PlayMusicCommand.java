@@ -33,7 +33,6 @@ public class PlayMusicCommand implements Command{
         HttpSession session = request.getSession();
         String id = request.getParameter("musicID");
         String title = request.getParameter("musicTitle");
-        String userID = request.getParameter("userID");
         
         if(id != null &&  title != null)
         {
@@ -42,19 +41,21 @@ public class PlayMusicCommand implements Command{
             try{
                 UserDao uDao = new UserDao("muiscdatabase");
                 MusicDao mDao = new MusicDao("musicdatabase");
-                String FilePath = mDao.PlayMusic(user, mID);
-                if (FilePath != null)
+                String song = mDao.PlayMusic(user, mID);
+                if (song != null)
                 {
                     session.setAttribute("MusicToPlay", mID);
                     session.setAttribute("MusicTitle", title);
-                    forwardToJsp = "CurrentSong.jsp";
+                    forwardToJsp = "Music.jsp";
                 }
                 
              
                 
             }catch(Exception e)
             {
-                System.out.println(e.getMessage());
+                forwardToJsp = "index.jsp";
+                session.setAttribute(title, e);
+                
             }
         }else
            {

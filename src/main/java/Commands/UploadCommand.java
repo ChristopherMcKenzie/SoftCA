@@ -63,7 +63,7 @@ public class UploadCommand implements Command{
                     else if(Action == false)
                     {
                         String msg = " Music Failed ";
-                        session.setAttribute("MuSuccess", UploaderID + Title + Genre + MusicLength + MusicPath);
+                        session.setAttribute("MuSuccess", msg);
                         
                         
                         forwardToJsp = "index.jsp";
