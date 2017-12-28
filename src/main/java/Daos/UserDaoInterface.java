@@ -31,7 +31,7 @@ public interface UserDaoInterface {
      * @param id
      * @return Users info based on ID
      */
-    public Users getUser(String name);
+    public Users getUser(int id );
     
 
 }

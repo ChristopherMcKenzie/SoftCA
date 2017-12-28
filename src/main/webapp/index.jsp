@@ -44,7 +44,7 @@
             Users user = new Users();
             UserDao uDao = new UserDao("musicdatabase");
             MusicDaoProxy mDao = new MusicDaoProxy();
-            
+           
             
             ArrayList<Music> allMusic = new ArrayList();
             allMusic = mDao.GetAllMusic();
@@ -57,12 +57,21 @@
         <input type="hidden" name="musicTitle" value="<%=allMusic.get(i).getTitle()%>" />
         <input type="hidden" name="action" value="Play" />
         <h3><%=(allMusic.get(i)).getTitle()%></h3>
-        <input type="submit" value="Play"/> <br><br>
+        <%
+            if (Value2!= null) {
+                        Users successUser = (Users) Value2; 
+                        %>
+        <input type="hidden" name="userID" value="<%=successUser.getUserID()%>"/>
+        
+        <%
+            }
+%>      <input type="submit" value="Play"/> <br><br>
         </form>
     </Playlist>
 
      <%
          }
+
                     if (Value2!= null) {
                         Users successUser = (Users) Value2;
 

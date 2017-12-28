@@ -34,13 +34,22 @@ public class PlayMusicCommand implements Command{
         HttpSession session = request.getSession();
         String id = request.getParameter("musicID");
         String title = request.getParameter("musicTitle");
+        String uid = request.getParameter("userID");
         
         if(id != null &&  title != null)
         {
             int mID = Integer.parseInt(id);
-            
+            int userID = Integer.parseInt(uid);
             try{
+                
                 UserDao uDao = new UserDao("muiscdatabase");
+                uDao.getUser(userID);
+                user.setAdmin(uDao.getUser(userID).getAdmin());
+                user.setEmail(uDao.getUser(userID).getEmail());
+                user.setFavGenre(uDao.getUser(userID).getFavGenre());
+                user.setPassword(uDao.getUser(userID).getPassword());
+                user.setUserID(userID);
+                user.setUserName(uDao.getUser(userID).getUserName());
                 MusicDaoProxy mDao = new MusicDaoProxy();
                 String song = mDao.PlayMusic(user, mID);
                 if (song != null)

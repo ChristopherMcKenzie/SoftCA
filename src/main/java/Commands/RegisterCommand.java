@@ -44,7 +44,6 @@ public class RegisterCommand implements Command{
                 String UserName = request.getParameter("userName");
                 String Password = request.getParameter("password");
                 String Email = request.getParameter("email");
-                String Country = request.getParameter("country");
                 String FavGenre = request.getParameter("genre");
                 
 
@@ -54,8 +53,7 @@ public class RegisterCommand implements Command{
                     UserDao userDao = new UserDao("musicdatabase");
                     boolean Action = userDao.registerUser(UserName, Password, Email,FavGenre);
                     if(Action == true){
-                        Users user = userDao.getUser(UserName);
-                        session.setAttribute("RegSuccess", user);
+                        session.setAttribute("RegSuccess", UserName);
                         
                         forwardToJsp = "index.jsp";
                         

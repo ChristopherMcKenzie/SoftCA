@@ -111,7 +111,7 @@ public class UserDao extends Dao implements UserDaoInterface{
     }
 
     @Override
-    public Users getUser(String name) {
+    public Users getUser(int id) {
         Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -119,9 +119,9 @@ public class UserDao extends Dao implements UserDaoInterface{
         try
         {
             con = getConnection();
-            String query = "Select * from user where username = ?";
+            String query = "Select * from user where userid = ?";
             ps = con.prepareStatement(query);
-            ps.setString(1, name);
+            ps.setInt(1, id);
             rs = ps.executeQuery();
             
             while(rs.next())

@@ -77,10 +77,10 @@ public class UserDaoTest {
     @Test
     public void testGetUser() {
         System.out.println("getUser");
-        String name = "BenRose";
+        int id = 1;
         
         Users expResult = new Users(1,1, "BenRose", "ben.rose76@gmail.com", "123", "Ireland");
-        Users result = uDao.getUser(name);
+        Users result = uDao.getUser(id);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
     }

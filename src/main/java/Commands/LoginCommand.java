@@ -22,6 +22,7 @@ public class LoginCommand implements Command{
                 String Entry1 = request.getParameter("userName");
                 String Password = request.getParameter("password");
                 String UserName = null;
+                int id = 0;
                 //ChrisTest
                 if (Entry1 != null && Password != null && !Entry1.equals("") && !Password.equals(""))
                 {
@@ -31,7 +32,7 @@ public class LoginCommand implements Command{
                         UserDao userDao = new UserDao("musicdatabase");
                         //this is so they can use there email as well as the username.
                         if(Entry1.contains("@")){
-                          UserName = userDao.getUser(UserName).getUserName();
+                          UserName = userDao.getUser(id).getUserName();
                         }
                         else if(!Entry1.contains("@")){
                           UserName = Entry1;
