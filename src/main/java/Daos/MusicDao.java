@@ -34,7 +34,7 @@ public class MusicDao extends Dao implements MusicDaoInterface{
             rs = ps.executeQuery(); 
         while(rs.next())
             {
-                song = rs.getString("File");
+                song = rs.getString("title");
             }
         }catch (SQLException e) {
             System.out.println("Exception occured in the PlayMusic() method: " + e.getMessage());
