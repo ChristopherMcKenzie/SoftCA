@@ -21,7 +21,7 @@
                 if(Value3!= null) {
                 String successmusic = (String) Value3;
                 
-                MusicDao mDao = new MusicDao("musicdatabase");
+                MusicDaoProxy mDao = new MusicDaoProxy();
                 Users currentUser = new Users();
                 UserDao uDao = new UserDao("musicdatabase");
                 

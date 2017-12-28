@@ -32,14 +32,15 @@ public class MusicDaoProxy implements MusicDaoInterface{
         }
         return singleProxyInstance;
     }
-    private MusicDaoProxy()
+    public MusicDaoProxy()
     {
         musicDao = new MusicDao("musicdatabase");
     }
     @Override
     public String PlayMusic(Users currentUser, int musicID) {
-        if(currentUser.getUserID() == 0)
+        if(currentUser.getUserID() != 0)
         {
+            getInstance();
             return musicDao.PlayMusic(currentUser, musicID);
         }
         else
@@ -51,15 +52,9 @@ public class MusicDaoProxy implements MusicDaoInterface{
     
 
     @Override
-    public ArrayList<Music> GetAllMusic(Users currentUser){
-        if(currentUser.getUserID() == 0)
-        {
-            return musicDao.GetAllMusic(currentUser);
-        }
-        else
-        {
-            return null;
-        }
+    public ArrayList<Music> GetAllMusic(){
+        
+            return musicDao.GetAllMusic();
     }
 
     @Override

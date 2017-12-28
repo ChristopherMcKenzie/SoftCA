@@ -81,15 +81,13 @@ public class MusicDaoTest {
     @Test
     public void testGetAllMusic() {
         System.out.println("GetAllMusic");
-        Users currentUser = new Users(1,1, "BenRose", "ben.rose76@gmail.com","123",  "Ireland");
 
         MusicDao instance = new MusicDao("musicdatabase");
         ArrayList<Music> expResult = null;
-        ArrayList<Music> result = instance.GetAllMusic(currentUser);
+        ArrayList<Music> result = instance.GetAllMusic();
         int finalRes = result.size();
-        assertEquals(6, finalRes);
+        assertEquals(3, finalRes);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
     
 }

@@ -104,7 +104,7 @@ public class MusicDao extends Dao implements MusicDaoInterface{
     }
 
     @Override
-    public ArrayList<Music> GetAllMusic(Users currentUser) {
+    public ArrayList<Music> GetAllMusic() {
         Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;

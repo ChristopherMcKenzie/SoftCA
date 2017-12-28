@@ -6,6 +6,7 @@
 package Commands;
 
 import Daos.MusicDao;
+import Daos.MusicDaoProxy;
 import Daos.UserDao;
 import Dtos.Users;
 import java.io.BufferedInputStream;
@@ -40,7 +41,7 @@ public class PlayMusicCommand implements Command{
             
             try{
                 UserDao uDao = new UserDao("muiscdatabase");
-                MusicDao mDao = new MusicDao("musicdatabase");
+                MusicDaoProxy mDao = new MusicDaoProxy();
                 String song = mDao.PlayMusic(user, mID);
                 if (song != null)
                 {

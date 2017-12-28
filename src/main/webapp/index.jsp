@@ -43,11 +43,11 @@
          <%
             Users user = new Users();
             UserDao uDao = new UserDao("musicdatabase");
-            MusicDao mDao = new MusicDao("musicdatabase");
+            MusicDaoProxy mDao = new MusicDaoProxy();
             
             
             ArrayList<Music> allMusic = new ArrayList();
-            allMusic = mDao.GetAllMusic(user);
+            allMusic = mDao.GetAllMusic();
             for (int i = 0; i < allMusic.size(); i++) {
         %>
 
