@@ -19,7 +19,7 @@
                         
          %>
         <p>
-            Hi <%=successUser.getUserName()%> you have access now.
+            Hi <%=successUser.getUserName()%> you have access now.<br>
             
             <%
                 }

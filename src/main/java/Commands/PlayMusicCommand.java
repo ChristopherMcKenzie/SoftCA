@@ -45,8 +45,7 @@ public class PlayMusicCommand implements Command{
                 String song = mDao.PlayMusic(user, mID);
                 if (song != null)
                 {
-                    session.setAttribute("MusicToPlay", mID);
-                    session.setAttribute("MusicTitle", title);
+                    session.setAttribute("PlaySuccess", title);
                     forwardToJsp = "Music.jsp";
                 }
                 
