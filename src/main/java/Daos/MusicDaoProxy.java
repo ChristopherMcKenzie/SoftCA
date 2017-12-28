@@ -15,8 +15,7 @@ import java.util.logging.Logger;
  */
 public class MusicDaoProxy implements MusicDaoInterface{
 
-    private MusicDao musicDao = new MusicDao("musicdatabase");
-    
+    private MusicDao musicDao;    
     private static volatile MusicDaoProxy singleProxyInstance;
     
     public static MusicDaoProxy getInstance()
@@ -33,7 +32,10 @@ public class MusicDaoProxy implements MusicDaoInterface{
         }
         return singleProxyInstance;
     }
-    
+    private MusicDaoProxy()
+    {
+        musicDao = new MusicDao("musicdatabase");
+    }
     @Override
     public String PlayMusic(Users currentUser, int musicID) {
         if(currentUser.getUserID() == 0)

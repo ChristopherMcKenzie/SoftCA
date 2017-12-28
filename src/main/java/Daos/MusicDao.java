@@ -20,6 +20,7 @@ public class MusicDao extends Dao implements MusicDaoInterface{
         super(databaseName);
     }
 
+
     @Override
     public String PlayMusic(Users currentUser, int musicID) {
         Connection con = null;

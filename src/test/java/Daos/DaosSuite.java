@@ -17,7 +17,7 @@ import org.junit.runners.Suite;
  * @author Gerard
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({Daos.MusicDaoProxyTest.class, Daos.DaoTest.class, Daos.MusicDaoTest.class, Daos.UserDaoTest.class})
+@Suite.SuiteClasses({ Daos.DaoTest.class, Daos.MusicDaoTest.class, Daos.UserDaoTest.class})
 public class DaosSuite {
 
     @BeforeClass
