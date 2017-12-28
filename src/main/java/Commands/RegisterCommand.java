@@ -52,7 +52,7 @@ public class RegisterCommand implements Command{
                 {
                     HttpSession session = request.getSession();
                     UserDao userDao = new UserDao("musicdatabase");
-                    boolean Action = userDao.registerUser(UserName, Password, Email, Country, FavGenre);
+                    boolean Action = userDao.registerUser(UserName, Password, Email,FavGenre);
                     if(Action == true){
                         Users user = userDao.getUser(UserName);
                         session.setAttribute("RegSuccess", user);

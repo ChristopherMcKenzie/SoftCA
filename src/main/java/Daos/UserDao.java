@@ -23,7 +23,7 @@ public class UserDao extends Dao implements UserDaoInterface{
     }
 
     @Override
-    public boolean registerUser(String uName, String password, String email, String country, String FavGenre) {
+    public boolean registerUser(String uName, String password, String email, String FavGenre) {
         Connection con = null;
         PreparedStatement ps = null;
         int rowsAffected = 0;
@@ -31,13 +31,12 @@ public class UserDao extends Dao implements UserDaoInterface{
         try{
             con = getConnection();
             
-            String query = "Insert into user(username, email, password, country, FavGenre) Values (?,?,?,?,?)";
+            String query = "Insert into user(username, email, password,FavGenre) Values (?,?,?,?)";
             ps = con.prepareStatement(query);
             ps.setString(1, uName);
             ps.setString(2, email);
             ps.setString(3, password);
-            ps.setString(4, country);
-            ps.setString(5, FavGenre);
+            ps.setString(4, FavGenre);
             
             rowsAffected = ps.executeUpdate();
             
@@ -120,7 +119,7 @@ public class UserDao extends Dao implements UserDaoInterface{
         try
         {
             con = getConnection();
-            String query = "Select * from users where username = ?";
+            String query = "Select * from user where username = ?";
             ps = con.prepareStatement(query);
             ps.setString(1, name);
             rs = ps.executeQuery();

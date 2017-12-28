@@ -18,7 +18,7 @@ public interface UserDaoInterface {
      * @param favGenre
      * @return true or false based on if the user registerd successfully 
      */
-    public boolean registerUser(String uName, String password, String email, String country, String favGenre);
+    public boolean registerUser(String uName, String password, String email, String favGenre);
     /**
      * 
      * @param uName
