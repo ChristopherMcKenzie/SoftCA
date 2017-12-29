@@ -9,6 +9,25 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Music Page</title>
+        <style type="text/css" href="stylesheet">
+            body
+            {
+                background-color:black;
+                color:green;
+            }
+            a
+            {
+                text-decoration: none;
+                color: white;
+                font-size: 15px;
+            }
+            #txtLength,#txtGenre,#txtTitle, #file
+            {
+                margin-top:10px;
+                margin-left:10px
+            }
+            
+        </style>
     </head>
     <body>
         <%
@@ -94,8 +113,8 @@
         <input type="hidden" name="userID" value="<%=successUser.getUserID()%>"/>
          Title  :  <input name="Title" id="txtTitle" size=30 type="text"  placeholder="Title"  /><br>  
          Genre  : <input name="Genre" id="txtGenre" size=30 type="text" placeholder="Genre" /><br>
-         Song: <input type="file" name="file" size="50"/><br>
-         Length: <input type="text" name="Length" size=30 type="text" placeholder="Length" /><br>
+         Song: <input type="file" id="file" name="file" size="50"/><br>
+         Length: <input type="text" id="txtLength" name="Length" size=30 type="text" placeholder="Length" /><br>
         <input type="hidden" name="action" value="Upload" />
         <input type="submit" value="Upload"/>
         </form>

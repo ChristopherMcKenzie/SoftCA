@@ -9,6 +9,25 @@
             <link href="CSS/Forms.css" rel="stylesheet" type="text/css"/>
       
         <title>Error</title>
+        <style type="text/css" href="stylesheet">
+            body
+            {
+                background-color:black;
+                color:green;
+            }
+            a
+            {
+                text-decoration: none;
+                color: white;
+                font-size: 15px;
+            }
+            #txtLength,#txtGenre,#txtTitle, #file
+            {
+                margin-top:10px;
+                margin-left:10px
+            }
+            
+        </style>
     </head>
     <body>
         <div id="wrapper">
