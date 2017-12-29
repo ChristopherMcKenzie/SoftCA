@@ -15,16 +15,23 @@
                     Object Value2  = session.getAttribute("CurrentUser");
                     if (Value2!= null) {
                         Users successUser = (Users) Value2;
-
                         
          %>
         <p>
             Hi <%=successUser.getUserName()%> you have access now.<br>
-            
+      
+        <form name="Log-out" action="FrontController">
+            <input type="hidden" name="action" value="Logout">
+            <input type="submit" value="Log-Out of Account"/> <br><br>
+        </form>
+    
+            <%
+                }else{
+            %>
+            <a href="Reg.jsp">Registration</a><br>
+            <a href="Login.jsp">Login</a>
             <%
                 }
-            %>
-            <%
                 Object Value3 = session.getAttribute("PlaySuccess");
                 if(Value3!= null) {
                 String Successmsg = (String) Value3;
@@ -36,9 +43,6 @@
                 }
             %>
 
-            <a href="Reg.jsp">Registration</a><br>
-            <a href="Login.jsp">Login</a>
-        </p>
         <h1>Player</h1>
          <%
             Users user = new Users();
@@ -52,7 +56,7 @@
         %>
 
     <Playlist>
-        <form name="SongUpload" action="FrontController" method="play" enctype="multipart/form-data">
+        <form name="PlaySong" action="FrontController" method="play" enctype="multipart/form-data">
         <input type="hidden" name="musicID" value="<%=allMusic.get(i).getMusicId()%>" />
         <input type="hidden" name="musicTitle" value="<%=allMusic.get(i).getTitle()%>" />
         <input type="hidden" name="action" value="Play" />
@@ -65,16 +69,24 @@
         
         <%
             }
-%>      <input type="submit" value="Play"/> <br><br>
+        %>      
+        <input type="submit" value="Play"/> <br><br>
         </form>
-    </Playlist>
+
+    
 
      <%
          }
-
+        %>
+        
+        <form name="StopSong" action="FrontController" method="play" enctype="multipart/form-data">
+           <input type="hidden" name="action" value="Stop" />
+           <input type="submit" value="Stop Music"/> <br><br>
+        </form>
+        </Playlist>
+        <%
                     if (Value2!= null) {
                         Users successUser = (Users) Value2;
-
                         
          %>
     <Upload>
@@ -97,3 +109,4 @@
             
     </body>
 </html>
+

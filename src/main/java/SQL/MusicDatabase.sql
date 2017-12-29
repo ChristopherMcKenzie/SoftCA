@@ -54,7 +54,6 @@ CREATE TABLE `user` (
   `username` varchar(20) NOT NULL,
   `email` varchar(30) NOT NULL,
   `password` varchar(128) NOT NULL,
-  `country` varchar(200) DEFAULT 'No Country',
   `FavGenre` varchar(30) Default 'None'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -62,8 +61,8 @@ CREATE TABLE `user` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `user` (`userID`, `username`, `email`, `password`, `country`, `admin`) VALUES
-(1, 'BenRose', 'ben.rose76@gmail.com', '123', 'Ireland', 'None');
+INSERT INTO `user` (`userID`, `username`, `email`, `password`, `admin`) VALUES
+(1, 'BenRose', 'ben.rose76@gmail.com', '123', '1');
 
 --
 -- Indexes for dumped tables
