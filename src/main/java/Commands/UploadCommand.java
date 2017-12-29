@@ -32,19 +32,7 @@ public class UploadCommand implements Command{
                 String Genre = request.getParameter("Genre");
                 String Length = request.getParameter("Length");
                 // gets absolute path of the web application
-                String appPath = "E:\\SoftProject\\SoftCA\\src\\main\\webapp\\Music";
-                String MusicName = null;
-                String MusicPath = null;
-                try {
-                    Part filePart = request.getPart("file");
-                     MusicName = filePart.getName();
-                     MusicPath = appPath + MusicName;
-                } catch (IOException ex) {
-                    Logger.getLogger(UploadCommand.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (ServletException ex) {
-                    Logger.getLogger(UploadCommand.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                
+                String appPath = "E:\\SoftProject\\SoftCA\\src\\main\\webapp\\Music\\" + Title + ".mp3";
 
                 if (Title != null && Genre != null && Length !=null && !Title.equals("") && !Genre.equals("") && !Length.equals(""))
                 {
@@ -52,10 +40,10 @@ public class UploadCommand implements Command{
                     double MusicLength = Double.parseDouble(Length);
                     HttpSession session = request.getSession();
                     MusicDao musicDao = new MusicDao("musicdatabase");
-                    boolean Action = musicDao.PostMusic(user, UploaderID, Title, Genre, MusicLength, MusicPath);
+                    boolean Action = musicDao.PostMusic(user, UploaderID, Title, Genre, MusicLength, appPath);
                     if(Action == true){
                         String msg = "Music Uploaded";
-                        session.setAttribute("MuSuccess", msg);
+                        session.setAttribute("PlaySuccess", msg);
                         
                         forwardToJsp = "index.jsp";
                         
@@ -63,7 +51,7 @@ public class UploadCommand implements Command{
                     else if(Action == false)
                     {
                         String msg = " Music Failed ";
-                        session.setAttribute("MuSuccess", msg);
+                        session.setAttribute("PlaySuccess", msg);
                         
                         
                         forwardToJsp = "index.jsp";

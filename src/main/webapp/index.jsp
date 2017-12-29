@@ -90,12 +90,12 @@
                         
          %>
     <Upload>
-     <form name="UploadSong" action="FrontController" method="upload">
+     <form name="UploadSong" action="FrontController" method="upload" enctype="multipart/form-data">
         <input type="hidden" name="userID" value="<%=successUser.getUserID()%>"/>
          Title  :  <input name="Title" id="txtTitle" size=30 type="text"  placeholder="Title"  /><br>  
          Genre  : <input name="Genre" id="txtGenre" size=30 type="text" placeholder="Genre" /><br>
-         Song: <input type="file" name="file" size="50"/><br>
-         Length: <input type="text" name="Length" size=30 type="text" placeholder="Length" /><br>
+ 
+         Length: <input type="text" name="Length" size="30" placeholder="Length" /><br>
         <input type="hidden" name="action" value="Upload" />
         <input type="submit" value="Upload"/>
         </form>
