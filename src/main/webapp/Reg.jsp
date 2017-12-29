@@ -10,6 +10,25 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Registration Page</title>
+        <style type="text/css" href="stylesheet">
+            body
+            {
+                background-color:black;
+                color:green;
+            }
+            a
+            {
+                text-decoration: none;
+                color: white;
+                font-size: 15px;
+            }
+            input
+            {
+                margin-top:10px;
+                margin-left:10px
+            }
+            
+        </style>
     </head>
     <body>
          <form name="reg" action="FrontController" method="post" onsubmit="return validateForm();">

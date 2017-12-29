@@ -9,6 +9,25 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Music Page</title>
+        <style type="text/css" href="stylesheet">
+            body
+            {
+                background-color:black;
+                color:green;
+            }
+            a
+            {
+                text-decoration: none;
+                color: white;
+                font-size: 15px;
+            }
+            #txtLength,#txtGenre,#txtTitle, #file
+            {
+                margin-top:10px;
+                margin-left:10px
+            }
+            
+        </style>
     </head>
     <body>
         <%
