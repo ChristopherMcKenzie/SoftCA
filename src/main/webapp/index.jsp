@@ -25,7 +25,7 @@
                 }
             %>
             <%
-                Object Value3 = session.getAttribute("MuSuccess");
+                Object Value3 = session.getAttribute("PlaySuccess");
                 if(Value3!= null) {
                 String Successmsg = (String) Value3;
             %>

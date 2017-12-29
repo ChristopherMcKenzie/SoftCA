@@ -42,28 +42,29 @@ public class PlayMusicCommand implements Command{
             int userID = Integer.parseInt(uid);
             try{
                 
-                UserDao uDao = new UserDao("muiscdatabase");
-                uDao.getUser(userID);
-                user.setAdmin(uDao.getUser(userID).getAdmin());
-                user.setEmail(uDao.getUser(userID).getEmail());
-                user.setFavGenre(uDao.getUser(userID).getFavGenre());
-                user.setPassword(uDao.getUser(userID).getPassword());
-                user.setUserID(userID);
-                user.setUserName(uDao.getUser(userID).getUserName());
+                UserDao uDao = new UserDao("musIcdatabase");
+                user = uDao.getUser(userID);
+                
                 MusicDaoProxy mDao = new MusicDaoProxy();
                 String song = mDao.PlayMusic(user, mID);
                 if (song != null)
                 {
-                    session.setAttribute("PlaySuccess", title);
+                    session.setAttribute("PlaySuccess", song);
                     forwardToJsp = "Music.jsp";
+                }
+                else
+                {
+                    session.setAttribute("errorMessage", song);
+                    forwardToJsp = "error.jsp";
                 }
                 
              
                 
             }catch(Exception e)
             {
-                forwardToJsp = "index.jsp";
-                session.setAttribute(title, e);
+                session.setAttribute("errorMessage", user.getUserName());
+
+                forwardToJsp = "error.jsp";
                 
             }
         }else
