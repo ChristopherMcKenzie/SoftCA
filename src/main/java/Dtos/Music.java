@@ -5,15 +5,13 @@
  */
 package Dtos;
 
-import Observer.MusicObserver;
 import java.util.Objects;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author ben
  */
-public class Music implements MusicObserver{
+public class Music {
     private int MusicID;
     private int UploaderID;
     private String Title;
@@ -120,12 +118,6 @@ public class Music implements MusicObserver{
     @Override
     public String toString() {
         return "Music{" + "MusicID=" + MusicID + ", UploaderID=" + UploaderID + ", Title=" + Title + ", Genre=" + Genre + ", File=" + File + ", Length=" + MusicLength + '}';
-    }
-
-    @Override
-    public void PlayNewSong(String title) {
-      //HttpSession session = request.getSession();
-      //session.setAttribute("PlaySuccess", title);
     }
 
 

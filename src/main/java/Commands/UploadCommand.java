@@ -6,6 +6,7 @@
 package Commands;
 
 import Daos.MusicDao;
+import Daos.UserDao;
 import Dtos.Users;
 import Observer.MusicObservable;
 import Observer.MusicObserver;
@@ -25,7 +26,7 @@ import javax.servlet.http.Part;
  *
  * @author ben
  */
-public class UploadCommand implements Command, MusicObservable, MusicObserver{
+public class UploadCommand implements Command, MusicObserver{
     private ArrayList<MusicObserver> observers = new ArrayList();
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
@@ -44,11 +45,13 @@ public class UploadCommand implements Command, MusicObservable, MusicObserver{
                     double MusicLength = Double.parseDouble(Length);
                     HttpSession session = request.getSession();
                     MusicDao musicDao = new MusicDao("musicdatabase");
+                    UserDao uDao = new UserDao("musicdatabase");
                     boolean Action = musicDao.PostMusic(user, UploaderID, Title, Genre, MusicLength, appPath);
                     if(Action == true){
                         String msg = "Music Uploaded";
                         session.setAttribute("PlaySuccess", msg);
-                        notifyMusicObservers(Title);
+                        
+
                         forwardToJsp = "index.jsp";
                         
                     }
@@ -75,32 +78,9 @@ public class UploadCommand implements Command, MusicObservable, MusicObserver{
                 return forwardToJsp;
     }                    
 
-    
-    public void notifyMusicObservers(String Title)
-    {
-        for(MusicObserver o : observers){
-            o.PlayNewSong(Title);
-        }
-    }
-
     @Override
-    public boolean registerMusicObserver(MusicObservable o) {
-        return observers.add(o);
-    }
-
-    @Override
-    public boolean removeMusicObserver(MusicObservable o) {
-        return observers.remove(o);
-    }
-
-    @Override
-    public void notifyMusicObservers() {
+    public void PlayNewSong() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void PlayNewSong(String title) {
-      session.setAttribute("PlaySuccess", title);
     }
 }
 

@@ -35,7 +35,8 @@
                     Object Value2  = session.getAttribute("CurrentUser");
                     if (Value2!= null) {
                         Users successUser = (Users) Value2;
-                        
+                        ArrayList<MusicObserver> observers = new ArrayList();
+                        successUser.registerMusicObserver(o);
          %>
         <p>
             Hi <%=successUser.getUserName()%> you have access now.<br>
@@ -46,12 +47,6 @@
         </form>
     
             <%
-                }else{
-            %>
-            <a href="Reg.jsp">Registration</a><br>
-            <a href="Login.jsp">Login</a>
-            <%
-                }
                 Object Value3 = session.getAttribute("PlaySuccess");
                 if(Value3!= null) {
                 String Successmsg = (String) Value3;
@@ -60,9 +55,14 @@
             <%=Successmsg%> 
         </p>
             <%
+              }else{
+            %>
+            <a href="Reg.jsp">Registration</a><br>
+            <a href="Login.jsp">Login</a>
+            <%
                 }
             %>
-
+                
         <h1>Player</h1>
          <%
             Users user = new Users();

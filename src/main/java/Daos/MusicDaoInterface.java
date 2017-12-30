@@ -32,7 +32,5 @@ public interface MusicDaoInterface {
      * @return List of the music available
      */
     public ArrayList<Music> GetAllMusic();
-    
- 
-    
+       
 }

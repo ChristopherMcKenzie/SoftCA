@@ -2,13 +2,19 @@
 package Dtos;
 //Author Ben
 
-public class Users implements Comparable<Users> {
+import Observer.MusicObservable;
+import Observer.MusicObserver;
+import java.util.ArrayList;
+
+
+public class Users implements Comparable<Users>, MusicObservable {
     private int UserID;
     private String UserName;
     private String Email;
     private String Password;
     private String FavGenre;
     private int admin;
+    private ArrayList<MusicObserver> observers = new ArrayList();
     
     public Users() {
     }
@@ -126,7 +132,23 @@ public class Users implements Comparable<Users> {
     public String toString() {
         return "Users{" + "UserID=" + UserID + ", UserName=" + UserName + ", Email=" + Email + ", Password=" + Password + ", FavGenre=" + FavGenre + '}';
     }
-    
-    
+
+
+    @Override
+    public void notifyMusicObservers() {
+       for(MusicObserver o : observers){
+            o.PlayNewSong();
+        }
+    }
+
+    @Override
+    public boolean registerMusicObserver(MusicObserver o) {
+        this.observers.add(o);
+    }
+
+    @Override
+    public boolean removeMusicObserver(MusicObserver o) {
+        this.observers.remove(o);
+    }
     
 }
