@@ -13,6 +13,7 @@ public interface MusicDaoInterface {
      * @return Redirects to a page where the music is playing
      */
     public String PlayMusic(Users currentUser, int musicID);
+      
     
     /**
      *

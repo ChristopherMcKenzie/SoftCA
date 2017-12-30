@@ -10,5 +10,5 @@ package Observer;
  * @author ben
  */
 public interface MusicObserver {
-    void PlayNewSong(boolean uploaded);
+    void PlayNewSong(String title);
 }

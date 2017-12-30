@@ -9,6 +9,7 @@ import Daos.MusicDao;
 import Daos.MusicDaoProxy;
 import Daos.UserDao;
 import Dtos.Users;
+import Observer.MusicObserver;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -75,5 +76,6 @@ public class PlayMusicCommand implements Command{
            }
         return forwardToJsp;
     }
-    
+
+
 }
