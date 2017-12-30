@@ -143,12 +143,12 @@ public class Users implements Comparable<Users>, MusicObservable {
 
     @Override
     public boolean registerMusicObserver(MusicObserver o) {
-        this.observers.add(o);
+        return this.observers.add(o);
     }
 
     @Override
     public boolean removeMusicObserver(MusicObserver o) {
-        this.observers.remove(o);
+       return this.observers.remove(o);
     }
     
 }

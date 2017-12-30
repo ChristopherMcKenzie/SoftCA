@@ -35,8 +35,8 @@
                     Object Value2  = session.getAttribute("CurrentUser");
                     if (Value2!= null) {
                         Users successUser = (Users) Value2;
-                        ArrayList<MusicObserver> observers = new ArrayList();
-                        successUser.registerMusicObserver(o);
+                        //ArrayList<MusicObserver> observers = new ArrayList();
+                        //successUser.registerMusicObserver(o);
          %>
         <p>
             Hi <%=successUser.getUserName()%> you have access now.<br>
@@ -83,9 +83,9 @@
         <h3><%=(allMusic.get(i)).getTitle()%></h3>
         <%
             if (Value2!= null) {
-                        Users successUser = (Users) Value2; 
+                        Users successUser2 = (Users) Value2; 
                         %>
-        <input type="hidden" name="userID" value="<%=successUser.getUserID()%>"/>
+        <input type="hidden" name="userID" value="<%=successUser2.getUserID()%>"/>
         
         <%
             }
@@ -106,12 +106,12 @@
         </Playlist>
         <%
                     if (Value2!= null) {
-                        Users successUser = (Users) Value2;
+                        Users successUser3 = (Users) Value2;
                         
          %>
     <Upload>
      <form name="UploadSong" action="FrontController" method="upload" enctype="multipart/form-data">
-        <input type="hidden" name="userID" value="<%=successUser.getUserID()%>"/>
+        <input type="hidden" name="userID" value="<%=successUser3.getUserID()%>"/>
          Title  :  <input name="Title" id="txtTitle" size=30 type="text"  placeholder="Title"  /><br>  
          Genre  : <input name="Genre" id="txtGenre" size=30 type="text" placeholder="Genre" /><br>
  

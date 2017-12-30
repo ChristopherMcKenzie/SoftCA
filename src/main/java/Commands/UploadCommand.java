@@ -7,6 +7,7 @@ package Commands;
 
 import Daos.MusicDao;
 import Daos.UserDao;
+import Dtos.Music;
 import Dtos.Users;
 import Observer.MusicObservable;
 import Observer.MusicObserver;
@@ -42,6 +43,10 @@ public class UploadCommand implements Command, MusicObserver{
                 if (Title != null && Genre != null && Length !=null && !Title.equals("") && !Genre.equals("") && !Length.equals(""))
                 {
                     int UploaderID = Integer.parseInt(ID);
+                    
+                    //Attempt to add the observer pattern
+                    //observers.add(this);
+                    //user.registerMusicObserver(this);
                     double MusicLength = Double.parseDouble(Length);
                     HttpSession session = request.getSession();
                     MusicDao musicDao = new MusicDao("musicdatabase");
@@ -78,6 +83,7 @@ public class UploadCommand implements Command, MusicObserver{
                 return forwardToJsp;
     }                    
 
+    
     @Override
     public void PlayNewSong() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
