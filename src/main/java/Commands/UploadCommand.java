@@ -27,8 +27,8 @@ import javax.servlet.http.Part;
  *
  * @author ben
  */
-public class UploadCommand implements Command, MusicObserver{
-    private ArrayList<MusicObserver> observers = new ArrayList();
+public class UploadCommand implements Command{
+    //private ArrayList<MusicObserver> observers = new ArrayList();
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
             String forwardToJsp = "";
@@ -83,10 +83,6 @@ public class UploadCommand implements Command, MusicObserver{
                 return forwardToJsp;
     }                    
 
-    
-    @Override
-    public void PlayNewSong() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+   
 }
 
