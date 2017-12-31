@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.7.0
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 22, 2017 at 04:43 PM
--- Server version: 10.1.16-MariaDB
--- PHP Version: 7.0.9
+-- Generation Time: Dec 31, 2017 at 05:27 PM
+-- Server version: 10.1.25-MariaDB
+-- PHP Version: 7.1.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -31,38 +33,17 @@ CREATE TABLE `music` (
   `UploaderID` int(4) NOT NULL,
   `Title` varchar(50) NOT NULL,
   `Genre` varchar(50) NOT NULL,
-  `File` varchar(200) NOT NULL DEFAULT 'Music/Default.mp3	',
-  `MusicLength` FLOAT(50) NOT NULL
+  `File` varchar(200) DEFAULT 'Music/Default.mp3	',
+  `MusicLength` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `music`
 --
 
-INSERT INTO `music` (`MusicID`, `UploaderID`, `Title`, `Genre`,  `File`, `MusicLength`) VALUES
-(1, 1, 'Deju Vu.mp3', 'Pop', 'Music/Deju Vu.mp3	',  4.20),
-(2, 1, 'Into The Sky by Tara St. Michel.mp3', 'Pop', 'Music/Into The Sky by Tara St. Michel.mp3	', 4.03)
-
--- --------------------------------------------------------
-
---
--- Table structure for table `users`
---
-
-CREATE TABLE `user` (
-  `userID` int(4) NOT NULL,
-  `username` varchar(20) NOT NULL,
-  `email` varchar(30) NOT NULL,
-  `password` varchar(128) NOT NULL,
-  `FavGenre` varchar(30) Default 'None'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `user` (`userID`, `username`, `email`, `password`, `admin`) VALUES
-(1, 'BenRose', 'ben.rose76@gmail.com', '123', '1');
+INSERT INTO `music` (`MusicID`, `UploaderID`, `Title`, `Genre`, `File`, `MusicLength`) VALUES
+(1, 1, 'Deju Vu.mp3', 'Pop', 'Music/Deju Vu.mp3	', 4.2),
+(2, 1, 'newsong', 'song', '2', 2);
 
 --
 -- Indexes for dumped tables
@@ -76,12 +57,6 @@ ALTER TABLE `music`
   ADD KEY `UploaderID` (`UploaderID`);
 
 --
--- Indexes for table `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`userID`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -89,23 +64,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `music`
 --
 ALTER TABLE `music`
-  MODIFY `MusicID` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-  MODIFY `userID` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `music`
---
-ALTER TABLE `music`
-  ADD CONSTRAINT `music_ibfk_1` FOREIGN KEY (`MusicID`) REFERENCES `users` (`userID`);
-
+  MODIFY `MusicID` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

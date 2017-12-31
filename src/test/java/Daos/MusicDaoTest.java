@@ -50,8 +50,8 @@ public class MusicDaoTest {
         System.out.println("PlayMusic");
         Users currentUser = new Users(1,1, "BenRose", "ben.rose76@gmail.com","123",  "Ireland");
         int musicID = 1;
-        String expResult = "Deju Vu.mp3";
-        String result = mDao.PlayMusic(currentUser, musicID);
+        Music expResult = new Music(1,1, "Deju Vu.mp3","Pop", "Music/Deju.Vu.mp3", 4.2);
+        Music result = mDao.PlayMusic(currentUser, musicID);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
     }

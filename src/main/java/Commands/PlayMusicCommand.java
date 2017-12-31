@@ -8,6 +8,7 @@ package Commands;
 import Daos.MusicDao;
 import Daos.MusicDaoProxy;
 import Daos.UserDao;
+import Dtos.Music;
 import Dtos.Users;
 import Observer.MusicObserver;
 import java.io.BufferedInputStream;
@@ -47,7 +48,7 @@ public class PlayMusicCommand implements Command{
                 user = uDao.getUser(userID);
                 
                 MusicDaoProxy mDao = new MusicDaoProxy();
-                String song = mDao.PlayMusic(user, mID);
+                Music song = mDao.PlayMusic(user, mID);
                 if (song != null)
                 {
                     session.setAttribute("PlaySuccess", song);

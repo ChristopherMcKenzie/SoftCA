@@ -1,0 +1,6 @@
+DAO
+Command
+Factory
+Singleton
+Proxy
+Attempt at Observer

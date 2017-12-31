@@ -22,20 +22,20 @@ public class MusicDao extends Dao implements MusicDaoInterface{
 
 
     @Override
-    public String PlayMusic(Users currentUser, int musicID) {
+    public Music PlayMusic(Users currentUser, int musicID) {
         Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String song = null;
+        Music song = null;
         try{
            con = getConnection();
-            String query = "Select title from music Where MusicID = ?";
+            String query = "Select * from music Where MusicID = ?";
             ps = con.prepareStatement(query);
             ps.setInt(1, musicID);
             rs = ps.executeQuery(); 
         while(rs.next())
             {
-                song = rs.getString("title");
+                song = new Music(rs.getInt("MusicID"), rs.getInt("UploaderID"), rs.getString("Title"), rs.getString("Genre"), rs.getString("File"), rs.getDouble("MusicLength"));
             }
         }catch (SQLException e) {
             System.out.println("Exception occured in the PlayMusic() method: " + e.getMessage());

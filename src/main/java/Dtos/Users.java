@@ -143,12 +143,23 @@ public class Users implements Comparable<Users>, MusicObservable {
 
     @Override
     public boolean registerMusicObserver(MusicObserver o) {
-        return this.observers.add(o);
+        if(o != null && !observers.contains(o)){
+            // Add the new observer
+            observers.add(o);
+            System.out.println("Adding observer " + o.toString() + " to list of observers for " + UserName + ".");
+            return true;
+        }
+        return false;
     }
 
     @Override
     public boolean removeMusicObserver(MusicObserver o) {
-       return this.observers.remove(o);
+       if(o!= null && observers.remove(o))
+        {
+            System.out.println("Removed observer " + o.toString() + " from list of observers for " + UserName + ".");
+            return true;
+        }
+       return false;
     }
     
 }

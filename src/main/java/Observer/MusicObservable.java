@@ -13,7 +13,6 @@ public interface MusicObservable {
     boolean registerMusicObserver(MusicObserver o);
     boolean removeMusicObserver(MusicObserver o);
     
-    // This could have been left out of the interface 
-    // (if we didn't want other code to be able to trigger it)
+  
     void notifyMusicObservers();
 }

@@ -5,13 +5,14 @@
  */
 package Dtos;
 
+import Observer.MusicObserver;
 import java.util.Objects;
 
 /**
  *
  * @author ben
  */
-public class Music {
+public class Music implements MusicObserver{
     private int MusicID;
     private int UploaderID;
     private String Title;
@@ -118,6 +119,11 @@ public class Music {
     @Override
     public String toString() {
         return "Music{" + "MusicID=" + MusicID + ", UploaderID=" + UploaderID + ", Title=" + Title + ", Genre=" + Genre + ", File=" + File + ", Length=" + MusicLength + '}';
+    }
+
+    @Override
+    public String PlayNewSong() {
+        return "Song: " + Title;
     }
 
 

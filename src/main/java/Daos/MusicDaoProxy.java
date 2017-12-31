@@ -37,7 +37,7 @@ public class MusicDaoProxy implements MusicDaoInterface{
         musicDao = new MusicDao("musicdatabase");
     }
     @Override
-    public String PlayMusic(Users currentUser, int musicID) {
+    public Music PlayMusic(Users currentUser, int musicID) {
         if(currentUser.getUserID() != 0)
         {
             getInstance();
