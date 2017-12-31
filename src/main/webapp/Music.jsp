@@ -39,16 +39,18 @@
                 Object Value3 = session.getAttribute("PlaySuccess");
                 if(Value3!= null) {
                 String successmusic = (String) Value3;
-                
+                //MusicObserver successmusic = (Music) Value3;
                 MusicDaoProxy mDao = new MusicDaoProxy();
                 Users currentUser = new Users();
                 UserDao uDao = new UserDao("musicdatabase");
                 
+
            %>
            <p>
                Current song is: <%=successmusic.toString()%>
            </p>
            <%
+               //<p>successmusic.PlayNewSong()</p>
                }
 
            %>

@@ -33,13 +33,15 @@
     <body>
         <%
                     Object Value2  = session.getAttribute("CurrentUser");
+                    
+                    ArrayList<Users> o = new ArrayList();
                     if (Value2!= null) {
-                        Users successUser = (Users) Value2;
-                        //ArrayList<MusicObserver> observers = new ArrayList();
-                        //successUser.registerMusicObserver(o);
+                //        MusicObservable successUser = (Users) Value2;
+                  //      o.add((Users)successUser);
+                        Users successUser2 = (Users) Value2;
          %>
         <p>
-            Hi <%=successUser.getUserName()%> you have access now.<br>
+            Hi <%=successUser2.getUserName() %> you have access now.<br>
       
         <form name="Log-out" action="FrontController">
             <input type="hidden" name="action" value="Logout">
